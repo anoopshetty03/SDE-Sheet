@@ -1,24 +1,18 @@
-void Reverse(int arr[], int start, int end)
-{
-  while (start <= end)
-  {
-    int temp = arr[start];
-    arr[start] = arr[end];
-    arr[end] = temp;
-    start++;
-    end--;
-  }
+void reverse(vector<int>& arr, int start, int end) {
+    while (start < end) {
+        swap(arr[start], arr[end]);
+        start++;
+        end--;
+    }
 }
 
-// Rotate Rotate k elements to right
-void Rotateeletoright(int arr[], int n, int k)
-{
-  // Reverse first n-k elements
-  Reverse(arr, 0, n - k - 1);
-  // Reverse last k elements
-  Reverse(arr, n - k, n - 1);
-  // Reverse whole array
-  Reverse(arr, 0, n - 1);
+void rightRotate(vector<int>& arr, int k) {
+    int n = arr.size();
+    k = k % n; // Handle cases where k > n
+
+    reverse(arr, 0, n - 1); // Reverse the whole array
+    reverse(arr, 0, k - 1); // Reverse the first k elements
+    reverse(arr, k, n - 1); // Reverse the remaining elements
 }
 
 
@@ -26,10 +20,10 @@ void Rotateeletoright(int arr[], int n, int k)
 void Rotateeletoleft(int arr[], int n, int k)
 {
   // Reverse first k elements
-  Reverse(arr, 0, k - 1);
+  reverse(arr, 0, k - 1);
   // Reverse last n-k elements
-  Reverse(arr, k, n - 1);
+  reverse(arr, k, n - 1);
   // Reverse whole array
-  Reverse(arr, 0, n - 1);
+  reverse(arr, 0, n - 1);
 }
 
